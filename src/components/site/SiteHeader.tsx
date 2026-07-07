@@ -31,12 +31,12 @@ export function SiteHeader() {
           : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <div className="container-page flex h-20 items-center justify-between gap-4">
+      <div className="container-page flex h-25 items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 items-center gap-3">
           <img
             src="/images/logo-mega-sombra.png"
             alt="Mega Sombra"
-            className="h-12 w-auto md:h-14"
+            className="h-20 w-auto md:h-27 translate-y-1"
             width={180}
             height={120}
           />
