@@ -130,7 +130,7 @@ function ProductPage() {
                     <Ruler className="h-4 w-4 text-gold" /> Medida
                   </label>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {product.sizes.map((s) => (
+                    {product.sizes.map((s: string) => (
                       <button
                         key={s}
                         type="button"
@@ -152,7 +152,7 @@ function ProductPage() {
                     <Palette className="h-4 w-4 text-gold" /> Cor
                   </label>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {product.colors.map((c) => (
+                    {product.colors.map((c: string) => (
                       <button
                         key={c}
                         type="button"
@@ -245,7 +245,7 @@ function ProductPage() {
             </div>
             <div className="lg:col-span-2">
               <ul className="grid gap-3 sm:grid-cols-2">
-                {product.specs.map((s) => (
+                {product.specs.map((s: string) => (
                   <li
                     key={s}
                     className="flex items-start gap-3 rounded-xl border border-border bg-white p-4 text-sm text-navy shadow-sm"
