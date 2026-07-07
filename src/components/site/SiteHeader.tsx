@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
-import logoAsset from "@/assets/logo.asset.json";
 import { buildWhatsappUrl, quickQuoteMessage } from "@/lib/products";
 
 const NAV = [
@@ -35,7 +34,7 @@ export function SiteHeader() {
       <div className="container-page flex h-20 items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 items-center gap-3">
           <img
-            src={logoAsset.url}
+            src="/images/logo-mega-sombra.png"
             alt="Mega Sombra"
             className="h-12 w-auto md:h-14"
             width={180}

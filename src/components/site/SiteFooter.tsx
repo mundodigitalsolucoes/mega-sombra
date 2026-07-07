@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
-import logoAsset from "@/assets/logo.asset.json";
 import {
   ADDRESS,
   EMAIL,
@@ -16,7 +15,7 @@ export function SiteFooter() {
       <div className="container-page grid gap-10 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Mega Sombra" className="h-16 w-auto" />
+            <img src="/images/logo-mega-sombra-rodape.png" alt="Mega Sombra" className="h-16 w-auto" />
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
             Fabricação própria de ombrelones, guarda-sóis, tendas, guarda-chuvas e bases.
