@@ -4,10 +4,10 @@ import { ArrowLeft, ArrowRight, Check, MessageCircle, Ruler, Palette, Sparkles }
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsappFab } from "@/components/site/WhatsappFab";
-import { buildWhatsappUrl, getProduct, products } from "@/lib/products";
+import { buildWhatsappUrl, getProduct, products, type Product } from "@/lib/products";
 
 export const Route = createFileRoute("/produtos/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { product: Product } => {
     const product = getProduct(params.slug);
     if (!product) throw notFound();
     return { product };
