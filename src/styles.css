@@ -123,56 +123,60 @@
   }
 }
 
-@utility container-page {
-  width: 100%;
-  margin-inline: auto;
-  max-width: 80rem;
-  padding-inline: 1.25rem;
+@layer utilities {
+  .container-page {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1.25rem;
+  }
 
   @media (min-width: 768px) {
-    padding-inline: 2rem;
+    .container-page {
+      padding-inline: 2rem;
+    }
   }
-}
 
-@utility eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
 
-@utility eyebrow::before {
-  content: "";
-  width: 2rem;
-  height: 1px;
-  background: currentColor;
-}
+  .eyebrow::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+  }
 
-@utility gold-underline {
-  position: relative;
-  display: inline-block;
-}
+  .gold-underline {
+    position: relative;
+    display: inline-block;
+  }
 
-@utility gold-underline::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -0.75rem;
-  transform: translateX(-50%);
-  width: 3rem;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  .gold-underline::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -0.75rem;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .fade-up {
+    animation: fadeUp 0.7s ease-out both;
+  }
 }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@utility fade-up {
-  animation: fadeUp 0.7s ease-out both;
 }
