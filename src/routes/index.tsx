@@ -27,7 +27,6 @@ import {
   quickQuoteMessage,
 } from "@/lib/products";
 import heroImg from "@/assets/hero.jpg";
-import personalizacaoImg from "@/assets/personalizacao.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -110,20 +109,23 @@ function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <img
-          src={heroImg}
-          alt="Ombrelones navy premium em terraço de restaurante"
-          className="h-full w-full object-cover"
-          width={1920}
-          height={1200}
-        />
+        <video
+  className="h-full w-full object-cover"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  poster={heroImg}
+>
+  <source src="/videos/hero.mp4" type="video/mp4" />
+</video>
         <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/70 to-navy/40" />
       </div>
 
       <div className="container-page relative py-24 md:py-36">
         <div className="max-w-3xl fade-up">
-          <span className="eyebrow text-gold-soft">Fábrica desde a matéria-prima</span>
-          <h1 className="mt-5 font-display text-4xl leading-[1.05] text-white md:text-6xl">
+           <h1 className="mt-5 font-display text-4xl leading-[1.05] text-white md:text-6xl">
             Fabricação de Ombrelones, Guarda-Sóis, Tendas e{" "}
             <span className="text-gold">Coberturas Personalizadas</span>
           </h1>
@@ -145,7 +147,7 @@ function Hero() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/20"
             >
-              <MessageCircle className="h-4 w-4" /> Solicitar orçamento
+              <MessageCircle className="h-4 w-4" /> Pedir Orçamento
             </a>
           </div>
 
@@ -278,7 +280,7 @@ function Personalizacao() {
         <div className="relative">
           <div className="absolute -left-4 -top-4 h-full w-full rounded-2xl border-2 border-gold/40" />
           <img
-            src={personalizacaoImg}
+            src="/images/sua-marca-aqui.png"
             alt="Ombrelones personalizados em resort"
             loading="lazy"
             className="relative aspect-[4/3] w-full rounded-2xl object-cover shadow-[var(--shadow-elegant)]"
