@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, MessageCircle, Ruler, Palette, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -61,12 +61,19 @@ function ProductNotFound() {
 function ProductPage() {
   const { product } = Route.useLoaderData();
 
+  const [selectedImage, setSelectedImage] = useState(product.images[0]);
   const [size, setSize] = useState(product.sizes[0]);
-  const [color, setColor] = useState(product.colors[0]);
+  const [color, setColor] = useState(product.colors[0]?.name ?? "");
   const [qty, setQty] = useState(1);
   const [notes, setNotes] = useState("");
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
+
+  useEffect(() => {
+    setSelectedImage(product.images[0]);
+    setSize(product.sizes[0]);
+    setColor(product.colors[0]?.name ?? "");
+  }, [product]);
 
   const whatsappHref = useMemo(() => {
     const msg = [
@@ -91,7 +98,7 @@ function ProductPage() {
         {/* Breadcrumb */}
         <div className="border-b border-border bg-secondary/40">
           <div className="container-page flex items-center gap-2 py-4 text-xs text-muted-foreground">
-            <Link to="/" className="hover:text-navy">Home</Link>
+            <Link to="/" className="hover:text-navy">Início</Link>
             <span>/</span>
             <Link to="/" hash="produtos" className="hover:text-navy">Produtos</Link>
             <span>/</span>
@@ -105,12 +112,25 @@ function ProductPage() {
               <div className="absolute -left-3 -top-3 h-full w-full rounded-2xl border-2 border-gold/40" />
               <div className="relative overflow-hidden rounded-2xl bg-secondary shadow-[var(--shadow-elegant)]">
                 <img
-                  src={product.image}
+                  src={selectedImage}
                   alt={product.name}
-                  className="aspect-square w-full object-cover"
+                  className="aspect-square w-full object-cover transition-opacity duration-300"
                   width={1024}
                   height={1024}
                 />
+              </div>
+              <div className="relative mt-4 grid grid-cols-3 gap-3">
+                {product.images.map((image, index) => (
+                  <button
+                    key={image}
+                    type="button"
+                    aria-label={`Ver imagem ${index + 1} de ${product.name}`}
+                    onClick={() => setSelectedImage(image)}
+                    className={`overflow-hidden rounded-xl border-2 bg-secondary transition-all ${selectedImage === image ? "border-gold ring-2 ring-gold/30" : "border-transparent hover:border-gold/60"}`}
+                  >
+                    <img src={image} alt={`${product.name} - imagem ${index + 1}`} className="aspect-square w-full object-cover" loading="lazy" />
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -152,20 +172,27 @@ function ProductPage() {
                     <Palette className="h-4 w-4 text-gold" /> Cor
                   </label>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {product.colors.map((c: string) => (
-                      <button
-                        key={c}
-                        type="button"
-                        onClick={() => setColor(c)}
-                        className={`rounded-full border px-4 py-2 text-sm transition-all ${
-                          color === c
-                            ? "border-navy bg-navy text-white"
-                            : "border-border bg-white text-navy hover:border-navy"
-                        }`}
-                      >
-                        {c}
-                      </button>
-                    ))}
+                    {product.colors.map((c) => {
+                      const active = color === c.name;
+                      return (
+                        <button
+                          key={c.name}
+                          type="button"
+                          aria-label={`Selecionar cor ${c.name}`}
+                          aria-pressed={active}
+                          onClick={() => {
+                            setColor(c.name);
+                            if (c.image) setSelectedImage(c.image);
+                          }}
+                          className={`inline-flex items-center gap-2 rounded-full border bg-white px-3 py-2 text-sm text-navy transition-all ${active ? "border-gold ring-2 ring-gold/40" : "border-border hover:border-navy"}`}
+                        >
+                          <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full border border-black/10" style={{ backgroundColor: c.hex }}>
+                            {active && <Check className="h-3 w-3 text-white drop-shadow" />}
+                          </span>
+                          {c.name}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -223,9 +250,6 @@ function ProductPage() {
                   <MessageCircle className="h-5 w-5" />
                   Solicitar orçamento pelo WhatsApp
                 </a>
-                <p className="text-xs text-muted-foreground">
-                  Sua mensagem será aberta no WhatsApp já preenchida com os dados escolhidos.
-                </p>
               </div>
             </div>
           </div>
@@ -288,7 +312,7 @@ function ProductPage() {
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-secondary">
                     <img
-                      src={p.image}
+                      src={p.images[0]}
                       alt={p.name}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
