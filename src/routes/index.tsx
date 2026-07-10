@@ -26,7 +26,7 @@ import {
   products,
   quickQuoteMessage,
 } from "@/lib/products";
-import heroImg from "@/assets/hero.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -59,6 +59,20 @@ const differentials = [
   { icon: Truck, title: "Entrega Sob Consulta", text: "Logística para todo o Brasil conforme volume e destino." },
 ];
 
+
+const homeProductImages: Record<string, string> = {
+  "ombrelone-redondo": "/images/home/ombrelone-redondo.png",
+  "ombrelone-quadrado": "/images/home/ombrelone-quadrado.png",
+  "guarda-sol": "/images/home/guarda-sol.png",
+  bases: "/images/home/base.png",
+  tenda: "/images/home/tenda.png",
+  "guarda-chuva": "/images/home/guarda-chuva.png",
+  "cadeira-encosto-fixo": "/images/home/cadeira-encosto-fixo.png",
+  "cadeira-reclinavel": "/images/home/cadeiras-reclinavel.png",
+  "cadeira-master-conforto-oversize": "/images/home/cadeira-master-conforto-oversize.png",
+  banquinho: "/images/home/banquinho.png",
+};
+
 const reviews = [
   {
     name: "Rafael Andrade",
@@ -90,7 +104,7 @@ function Home() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main id="topo" className="pt-20">
+      <main id="topo">
         <Hero />
         <Differentials />
         <ProductsSection />
@@ -116,7 +130,6 @@ function Hero() {
   loop
   playsInline
   preload="auto"
-  poster={heroImg}
 >
   <source src="/videos/hero.mp4" type="video/mp4" />
 </video>
@@ -151,12 +164,11 @@ function Hero() {
             </a>
           </div>
 
-          <div className="mt-12 grid max-w-2xl grid-cols-2 gap-6 md:grid-cols-4">
+          <div className="mt-12 grid max-w-2xl grid-cols-2 gap-6 md:grid-cols-3">
             {[
-              { n: "10+", l: "anos de fábrica" },
               { n: "100%", l: "sob medida" },
-              { n: "24h", l: "resposta rápida" },
               { n: "BR", l: "entregamos" },
+              { n: "✓", l: "fabricação própria" },
             ].map((s) => (
               <div key={s.l} className="border-l border-gold/60 pl-4">
                 <div className="font-display text-2xl text-white md:text-3xl">{s.n}</div>
@@ -239,7 +251,7 @@ function ProductsSection() {
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
                 <img
-                  src={p.image}
+                  src={homeProductImages[p.slug] ?? p.images[0]}
                   alt={p.name}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -258,7 +270,7 @@ function ProductsSection() {
                 </p>
                 <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                   <span className="text-xs text-muted-foreground">
-                    {p.sizes.length} medidas • {p.colors.length}+ cores
+                    {p.sizes.length} medidas • {p.colors.length} cores
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy transition-colors group-hover:text-gold">
                     Ver detalhes <ArrowRight className="h-4 w-4" />
