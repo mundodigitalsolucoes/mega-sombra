@@ -39,6 +39,10 @@ const standardColors: ProductColor[] = [
   { name: "Bege", hex: "#d6b98c" },
 ];
 
+// Quando uma cor não possui `image`, as fotos disponíveis do produto não comprovam
+// uma correspondência visual exclusiva para essa cor; o seletor permanece visual
+// e a galeria mantém a imagem atual ao selecionar essa opção.
+
 export const products: Product[] = [
   {
     slug: "ombrelone-redondo",
@@ -48,7 +52,15 @@ export const products: Product[] = [
     description: "Perfeito para restaurantes, bares, resorts, áreas de piscina e ambientes externos de alto padrão. Acabamento em madeira envernizada e cobertura em Bagum ou lona reforçada.",
     images: ["/images/produtos/ombrelone-redondo/ombrelone-redondo-01.png", "/images/produtos/ombrelone-redondo/ombrelone-redondo-02.png", "/images/produtos/ombrelone-redondo/ombrelone-redondo-03.png"],
     sizes: ["2,00 m", "2,40 m", "3,00 m"],
-    colors: standardColors.filter((c) => ["Azul-marinho", "Azul", "Preto", "Verde", "Vermelho", "Branco", "Bege"].includes(c.name)),
+    colors: [
+      { name: "Azul", hex: "#2563eb", image: "/images/produtos/ombrelone-redondo/ombrelone-redondo-01.png" },
+      { name: "Azul-marinho", hex: "#0f2555" },
+      { name: "Preto", hex: "#111827" },
+      { name: "Verde", hex: "#16a34a" },
+      { name: "Vermelho", hex: "#dc2626" },
+      { name: "Branco", hex: "#ffffff" },
+      { name: "Bege", hex: "#d6b98c" },
+    ],
     specs: ["Armação em madeira de lei tratada e envernizada", "Verniz a prova d’água", "8 varetas e varão central Ø 32 mm", "Cobertura em Bagum ou lona reforçada", "Disponível com ou sem abas"],
     category: "Ombrelones",
   },
@@ -60,7 +72,15 @@ export const products: Product[] = [
     description: "Linhas retas e sofisticadas para áreas gourmet, decks, restaurantes e espaços comerciais. Estrutura reforçada nos modelos maiores.",
     images: ["/images/produtos/ombrelone-quadrado/ombrelone-qiadrado-01.png", "/images/produtos/ombrelone-quadrado/ombrelone-quadrado-02.png", "/images/produtos/ombrelone-quadrado/ombrelone-quadrado-03.png"],
     sizes: ["1,55 × 1,55 m", "2 × 2 m", "3 × 3 m", "4 × 4 m"],
-    colors: standardColors.filter((c) => ["Azul-marinho", "Azul", "Preto", "Verde", "Vermelho", "Branco", "Bege"].includes(c.name)),
+    colors: [
+      { name: "Azul", hex: "#2563eb", image: "/images/produtos/ombrelone-quadrado/ombrelone-qiadrado-01.png" },
+      { name: "Azul-marinho", hex: "#0f2555" },
+      { name: "Preto", hex: "#111827" },
+      { name: "Verde", hex: "#16a34a" },
+      { name: "Vermelho", hex: "#dc2626" },
+      { name: "Branco", hex: "#ffffff" },
+      { name: "Bege", hex: "#d6b98c" },
+    ],
     specs: ["Armação em madeira de lei tratada e envernizada", "8 varetas com varão central Ø 32 mm (até 2×2 m)", "Varão reforçado Ø 54 mm nos modelos 3×3 m e 4×4 m", "Cobertura em Bagum ou laminado de PVC reforçado com poliéster", "Modelos 3×3 m e 4×4 m apenas sem abas"],
     category: "Ombrelones",
   },
@@ -72,7 +92,16 @@ export const products: Product[] = [
     description: "Ideal para praias, piscinas e áreas externas. Estrutura leve, resistente e de fácil manuseio, com acabamento premium e diversas opções de cor.",
     images: ["/images/produtos/guarda-sol/guarda-sol-01.png", "/images/produtos/guarda-sol/guarda-sol-02.png", "/images/produtos/guarda-sol/guarda-sol-03.png"],
     sizes: ["1,60 m", "1,80 m", "2,00 m"],
-    colors: standardColors,
+    colors: [
+      { name: "Azul", hex: "#2563eb", image: "/images/produtos/guarda-sol/guarda-sol-02.png" },
+      { name: "Verde", hex: "#16a34a", image: "/images/produtos/guarda-sol/guarda-sol-03.png" },
+      { name: "Azul-marinho", hex: "#0f2555" },
+      { name: "Vermelho", hex: "#dc2626" },
+      { name: "Preto", hex: "#111827" },
+      { name: "Branco", hex: "#ffffff" },
+      { name: "Amarelo", hex: "#facc15" },
+      { name: "Laranja", hex: "#f97316" },
+    ],
     specs: ["Armação em aço 1.060 efeito mola com 8 varetas Ø 3,50–4,00 mm", "Haste central em alumínio trefilado", "Reforço em madeira nas duas extremidades", "Cobertura em tecido Bagum ou KP"],
     category: "Guarda-sóis",
   },
@@ -96,7 +125,15 @@ export const products: Product[] = [
     description: "Ideal para eventos, feiras, ações promocionais e áreas comerciais. Estrutura leve, robusta e de armar rápido para sombreamento profissional.",
     images: ["/images/produtos/tenda/tenda-01.png", "/images/produtos/tenda/tenda-02.png", "/images/produtos/tenda/tenda-03.png"],
     sizes: ["2 × 2 m", "3 × 3 m"],
-    colors: standardColors.filter((c) => ["Branco", "Preto", "Azul", "Vermelho", "Verde", "Amarelo"].includes(c.name)),
+    colors: [
+      { name: "Azul", hex: "#2563eb", image: "/images/produtos/tenda/tenda-01.png" },
+      { name: "Laranja", hex: "#f97316", image: "/images/produtos/tenda/tenda-02.png" },
+      { name: "Branco", hex: "#ffffff" },
+      { name: "Preto", hex: "#111827" },
+      { name: "Vermelho", hex: "#dc2626" },
+      { name: "Verde", hex: "#16a34a" },
+      { name: "Amarelo", hex: "#facc15" },
+    ],
     specs: ["Estrutura interna em tubos de alumínio oblongo", "Cobertura em laminado de PVC reforçado com poliéster", "Montagem sanfonada rápida", "Uso indicado para proteção solar"],
     category: "Coberturas",
   },
@@ -108,7 +145,16 @@ export const products: Product[] = [
     description: "Guarda-chuva profissional com estrutura reforçada e tecido resinado. Excelente para personalização corporativa, revendedores e uso institucional.",
     images: ["/images/produtos/guarda-chuva/guarda-chuva-01.png", "/images/produtos/guarda-chuva/guarda-chuva-02.png", "/images/produtos/guarda-chuva/guarda-chuva-03.png"],
     sizes: ["1,40 m", "1,60 m"],
-    colors: [{ name: "Azul-marinho", hex: "#0f2555" }, { name: "Preto", hex: "#111827" }, { name: "Vermelho", hex: "#dc2626" }, { name: "Camuflado Aeronáutica", hex: "#64748b" }, { name: "Camuflado Exército", hex: "#4d7c0f" }, { name: "Camuflado Tropa de Choque", hex: "#374151" }],
+    colors: [
+      { name: "Laranja", hex: "#f97316", image: "/images/produtos/guarda-chuva/guarda-chuva-01.png" },
+      { name: "Vermelho", hex: "#991b1b", image: "/images/produtos/guarda-chuva/guarda-chuva-02.png" },
+      { name: "Preto", hex: "#111827" },
+      { name: "Verde", hex: "#14532d" },
+      { name: "Branco", hex: "#ffffff" },
+      { name: "Azul", hex: "#1d4ed8" },
+      { name: "Amarelo", hex: "#facc15" },
+      { name: "Cinza", hex: "#4b5563" },
+    ],
     specs: ["Armação com 8 varetas em aço 1040/1045 Ø 3,10 mm", "Cobertura em tecido nylon 70 resinado", "Personalização disponível para pedidos em quantidade"],
     category: "Guarda-chuvas",
   },
